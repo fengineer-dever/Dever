@@ -1,0 +1,43 @@
+{
+  "id": "placeholder",
+  "name": "이름(placeholder)",
+  "role": "직무(placeholder)",
+  "company": "소속(placeholder)",
+  "profileImage": "",
+  "workspaceImage": "",
+  "tagline": "한 줄 소개(placeholder)",
+  "tags": [
+    "태그1",
+    "태그2"
+  ],
+  "publishedAt": "2026-02-12",
+  "bio": "자기소개(placeholder)",
+  "sections": [
+    {
+      "type": "qa",
+      "question": "질문 예시(placeholder)",
+      "answer": "답변 예시(placeholder)"
+    },
+    {
+      "type": "workspace",
+      "title": "워크스페이스",
+      "items": [
+        {
+          "category": "카테고리",
+          "name": "항목명(placeholder)"
+        }
+      ]
+    },
+    {
+      "type": "project",
+      "title": "프로젝트 소개",
+      "projects": [
+        {
+          "name": "프로젝트명(placeholder)",
+          "description": "프로젝트 설명(placeholder)",
+          "url": ""
+        }
+      ]
+    }
+  ]
+}

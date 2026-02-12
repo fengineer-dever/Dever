@@ -1,0 +1,12 @@
+[
+  {
+    "id": "placeholder",
+    "name": "이름(placeholder)",
+    "role": "직무(placeholder)",
+    "company": "소속(placeholder)",
+    "profileImage": "",
+    "tagline": "한 줄 소개(placeholder)",
+    "tags": ["태그1", "태그2"],
+    "publishedAt": "2026-02-12"
+  }
+]
