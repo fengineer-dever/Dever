@@ -8,8 +8,8 @@
   --accent: #9f2f1b;
   --accent-soft: #efe0da;
 
-  --font-sans: 'SUIT', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-serif: 'Fraunces', 'Iowan Old Style', 'Times New Roman', serif;
+  --font-sans: 'KoddiUD OnGothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'KoddiUD OnGothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;
 
   --text-xs: 0.75rem;
@@ -190,7 +190,9 @@ img {
   margin-top: var(--space-3);
   font-size: var(--text-lg);
   color: var(--muted);
-  max-width: 52ch;
+  max-width: 100%;
+  word-break: keep-all;
+  line-break: loose;
 }
 
 .hero__meta {
