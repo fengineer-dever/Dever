@@ -71,11 +71,10 @@ const InterviewPage = {
 
         hero.innerHTML = `
       <div class="interview-hero__inner container">
-        <div class="interview-hero__image-wrapper">
-          ${d.profileImage
-                ? `<img class="interview-hero__image" src="${d.profileImage}" alt="${d.name}">`
-                : `<div class="interview-hero__image-placeholder">${getInitials(d.name)}</div>`
-            }
+        <div class="hex interview-hero__portrait">
+          <div class="hex__inner">${d.profileImage
+                ? `<img src="${d.profileImage}" alt="${d.name}">`
+                : getInitials(d.name)}</div>
         </div>
         <div class="interview-hero__info">
           <span class="interview-hero__eyebrow">INTERVIEW</span>
@@ -104,7 +103,7 @@ const InterviewPage = {
 
         // Bio
         if (d.bio) {
-            html += `<div class="interview-bio">${d.bio}</div>`;
+            html += `<div class="interview-bio">${renderParagraphs(d.bio)}</div>`;
         }
 
         // Sections
@@ -136,7 +135,7 @@ const InterviewPage = {
         // Back link
         html += `
       <div style="text-align: center; padding: var(--space-5) 0;">
-        <a href="index.html" style="font-size: var(--text-sm); color: var(--muted);">← 다른 인터뷰 보기</a>
+        <a href="index.html" class="back-link">← 목록으로 돌아가기</a>
       </div>
     `;
 
@@ -157,9 +156,9 @@ const InterviewPage = {
         return `
       <div class="qa-section">
         <div class="qa-item" data-animate>
-          <span class="qa-number">${String(index).padStart(2, '0')}</span>
+          <span class="qa-number">Q.${String(index).padStart(2, '0')}</span>
           <h3 class="qa-question">${section.question}</h3>
-          <p class="qa-answer">${section.answer}</p>
+          <div class="qa-answer">${renderParagraphs(section.answer)}</div>
           ${imageHtml}
         </div>
       </div>
@@ -209,7 +208,7 @@ const InterviewPage = {
         if (related.length === 0) {
             return `
         <section class="related-section" data-animate>
-          <h2 class="related-section__title">More from the archive</h2>
+          <h2 class="related-section__title">다른 인터뷰</h2>
           <p class="related-section__empty">다른 인터뷰가 추가되면 여기에 함께 표시됩니다.</p>
         </section>
       `;
@@ -217,7 +216,7 @@ const InterviewPage = {
 
         return `
       <section class="related-section" data-animate>
-        <h2 class="related-section__title">More from the archive</h2>
+        <h2 class="related-section__title">다른 인터뷰</h2>
         <div class="related-grid">
           ${related.map((item) => `
             <a href="interview.html?id=${item.id}" class="related-card">
@@ -264,12 +263,19 @@ const InterviewPage = {
 
     updateMeta() {
         if (!this.data) return;
-        document.title = 'Dever 데버';
+        const title = `${this.data.name} — Dever 데버`;
+        const description = `${this.data.tagline} — 대전 로컬 개발자 인터뷰`;
+
+        document.title = title;
 
         const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-            metaDesc.content = `${this.data.tagline} — 대전 로컬 개발자 인터뷰`;
-        }
+        if (metaDesc) metaDesc.content = description;
+
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.content = title;
+
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.content = description;
     }
 };
 

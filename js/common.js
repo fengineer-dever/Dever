@@ -2,23 +2,6 @@
 // Dever — Common Utilities
 // ============================================
 
-// Theme Management
-const ThemeManager = {
-  init() {
-    this.set('light');
-  },
-
-  set(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    const btn = document.querySelector('.nav__theme-toggle');
-    if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
-  },
-
-  toggle() {
-    this.set('light');
-  }
-};
-
 // Navigation
 const Nav = {
   init() {
@@ -35,6 +18,7 @@ const Nav = {
     nav.innerHTML = `
       <div class="nav__inner">
         <a href="index.html" class="nav__logo">
+          <img src="images/BEE_logo.svg" alt="" class="nav__logo-icon">
           <span>Dever 데버</span>
         </a>
         <ul class="nav__links" id="navLinks">
@@ -122,6 +106,16 @@ function getInitials(name) {
   return name.charAt(0);
 }
 
+// Utility: Convert plain text with newlines to paragraphs
+// (빈 줄 = 문단 구분, 단일 줄바꿈 = <br>)
+function renderParagraphs(text) {
+  if (!text) return '';
+  return text
+    .split(/\n\s*\n/)
+    .map(p => `<p>${p.trim().replace(/\n/g, '<br>')}</p>`)
+    .join('');
+}
+
 // Utility: Build interview request mailto on about page
 function setupInterviewRequestMailto() {
   const link = document.getElementById('interviewRequestLink');
@@ -152,6 +146,5 @@ function setupInterviewRequestMailto() {
 document.addEventListener('DOMContentLoaded', () => {
   Nav.init();
   Footer.render();
-  ThemeManager.init();
   setupInterviewRequestMailto();
 });
