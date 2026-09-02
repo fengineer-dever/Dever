@@ -281,7 +281,9 @@ const InterviewPage = {
             'data-reactions-enabled': '1',
             'data-emit-metadata': '0',
             'data-input-position': 'bottom',
-            'data-theme': 'light',
+            // 커스텀 테마(라이트 기반 + 리액션 버튼 확대). iframe 내부라
+            // 페이지 CSS가 닿지 않으므로 테마 CSS URL로 스타일링한다.
+            'data-theme': 'https://fengineer-dever.github.io/Dever/css/giscus-theme.css',
             'data-lang': 'ko'
         };
         Object.entries(attrs).forEach(([k, v]) => script.setAttribute(k, v));
