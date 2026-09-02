@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "id": "chogihwa",
+    "name": "초기화",
+    "role": "대학원생",
+    "company": "연구소",
+    "profileImage": "images/interviews/chogihwa/profile.jpg",
+    "tagline": "학부 때는 코딩 못하는 사람이었는데, 어쩌다 보니 연구 주제도 코딩이네요.",
+    "tags": [
+      "대학원생",
+      "LLM",
+      "펜지니어",
+      "대전 토박이"
+    ],
+    "publishedAt": "2026-09-01"
+  }
+]
