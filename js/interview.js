@@ -21,6 +21,7 @@ const InterviewPage = {
         if (this.data) {
             this.renderHero();
             this.renderContent();
+            this.renderGiscus();
             this.updateMeta();
             ScrollAnimator.init();
         }
@@ -131,6 +132,15 @@ const InterviewPage = {
 
         // Share
         html += this.renderShare();
+
+        // Comments (giscus)
+        html += `
+      <section class="comments-section">
+        <h2 class="comments-section__title">응원과 댓글</h2>
+        <p class="comments-section__hint">GitHub 계정으로 하트와 댓글을 남길 수 있어요.</p>
+        <div id="giscusContainer"></div>
+      </section>
+    `;
 
         // Back link
         html += `
@@ -246,6 +256,37 @@ const InterviewPage = {
         </div>
       </div>
     `;
+    },
+
+    renderGiscus() {
+        const container = document.getElementById('giscusContainer');
+        if (!container || !this.data) return;
+
+        // innerHTML로 넣은 <script>는 실행되지 않으므로 직접 주입한다.
+        const script = document.createElement('script');
+        script.src = 'https://giscus.app/client.js';
+        script.async = true;
+        script.crossOrigin = 'anonymous';
+
+        const attrs = {
+            'data-repo': 'fengineer-dever/Dever',
+            'data-repo-id': 'R_kgDOROaEjQ',
+            'data-category': 'Announcements',
+            'data-category-id': 'DIC_kwDOROaEjc4DEsFu',
+            // interview.html?id=<id> 는 pathname이 모두 같으므로
+            // 인터뷰별로 스레드가 분리되도록 id 기반 specific 매핑을 쓴다.
+            'data-mapping': 'specific',
+            'data-term': `interview:${this.data.id}`,
+            'data-strict': '0',
+            'data-reactions-enabled': '1',
+            'data-emit-metadata': '0',
+            'data-input-position': 'bottom',
+            'data-theme': 'light',
+            'data-lang': 'ko'
+        };
+        Object.entries(attrs).forEach(([k, v]) => script.setAttribute(k, v));
+
+        container.appendChild(script);
     },
 
     renderShare() {

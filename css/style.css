@@ -1048,3 +1048,22 @@ a.hero__featured:hover {
     scroll-behavior: auto;
   }
 }
+
+/* Comments (giscus) */
+.comments-section {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+}
+
+.comments-section__title {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-1);
+}
+
+.comments-section__hint {
+  color: var(--ink-soft, inherit);
+  opacity: 0.7;
+  font-size: 0.875rem;
+  margin-bottom: var(--space-3);
+}
