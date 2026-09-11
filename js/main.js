@@ -15,7 +15,7 @@ const MainPage = {
   async loadInterviews() {
     try {
       const res = await fetch('data/interviews.json');
-      this.interviews = await res.json();
+      this.interviews = sortByNewest(await res.json());
     } catch (err) {
       console.error('인터뷰 데이터 로드 실패:', err);
       this.interviews = [];
@@ -85,6 +85,9 @@ const MainPage = {
       return;
     }
 
+    // 인덱스 번호는 발행 순서(오래된 것이 01) — 목록 표시는 최신순
+    const total = filtered.length;
+
     list.innerHTML = `
       <div class="list-head">
         <span class="list-head__label">INDEX</span>
@@ -93,7 +96,7 @@ const MainPage = {
     ` + filtered.map((interview, i) => `
       <a href="interview.html?id=${interview.id}" class="list-item animate-in" data-animate style="animation-delay: ${i * 0.04}s">
         <div class="list-item__meta">
-          <span class="list-item__index">${String(i + 1).padStart(2, '0')}</span>
+          <span class="list-item__index">${String(total - i).padStart(2, '0')}</span>
           <span class="list-item__date">${formatDate(interview.publishedAt)}</span>
         </div>
         <div class="list-item__body">

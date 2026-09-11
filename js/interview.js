@@ -31,7 +31,7 @@ const InterviewPage = {
         try {
             const res = await fetch('data/interviews.json');
             if (!res.ok) throw new Error('Not found');
-            this.interviews = await res.json();
+            this.interviews = sortByNewest(await res.json());
         } catch (err) {
             console.error('인터뷰 목록 로드 실패:', err);
             this.interviews = [];
@@ -128,8 +128,6 @@ const InterviewPage = {
             });
         }
 
-        html += this.renderRelated();
-
         // Share
         html += this.renderShare();
 
@@ -141,6 +139,9 @@ const InterviewPage = {
         <div id="giscusContainer"></div>
       </section>
     `;
+
+        // Related interviews (댓글과 목록 링크 사이)
+        html += this.renderRelated();
 
         // Back link
         html += `

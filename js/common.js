@@ -101,6 +101,11 @@ function formatDate(dateStr) {
   return `${year}.${month}.${day}`;
 }
 
+// Utility: 발행일(publishedAt) 내림차순 — 최신 인터뷰가 먼저 오도록 정렬
+function sortByNewest(interviews) {
+  return [...interviews].sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')));
+}
+
 // Utility: Get initials
 function getInitials(name) {
   return name.charAt(0);
