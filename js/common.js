@@ -113,11 +113,19 @@ function getInitials(name) {
 
 // Utility: Convert plain text with newlines to paragraphs
 // (빈 줄 = 문단 구분, 단일 줄바꿈 = <br>)
+// 문단이 '> '로 시작하면 인터뷰어(Dever)의 되물음으로 렌더링
 function renderParagraphs(text) {
   if (!text) return '';
   return text
     .split(/\n\s*\n/)
-    .map(p => `<p>${p.trim().replace(/\n/g, '<br>')}</p>`)
+    .map(p => {
+      const trimmed = p.trim();
+      if (trimmed.startsWith('> ')) {
+        const aside = trimmed.slice(2).trim().replace(/\n>?\s?/g, '<br>');
+        return `<p class="qa-aside"><span class="qa-aside__label">DEVER</span>${aside}</p>`;
+      }
+      return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;
+    })
     .join('');
 }
 

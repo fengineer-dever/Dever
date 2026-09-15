@@ -13,5 +13,20 @@
       "대전 토박이"
     ],
     "publishedAt": "2026-09-01"
+  },
+  {
+    "id": "pingpong",
+    "name": "핑퐁",
+    "role": "임베디드 통신 프로토콜 엔지니어",
+    "company": "방산 SW 기업 & 대학원",
+    "profileImage": "images/interviews/pingpong/profile.webp",
+    "tagline": "낮에는 장비들이 서로 대화하게 만드는 임베디드 통신 개발자, 밤에는 그 대화에 섞인 거짓말을 연구하는 대학원생입니다.",
+    "tags": [
+      "임베디드",
+      "무선 통신",
+      "방산",
+      "비전공 출신"
+    ],
+    "publishedAt": "2026-09-11"
   }
 ]
